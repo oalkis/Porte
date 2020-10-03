@@ -1,0 +1,41 @@
+﻿@model List<Part>
+<div hidden id="box_partial">
+    <table class="table table-bordered">
+        <thead>
+
+            <tr>
+
+                <th>BOX_ID</th>
+                <th>PART_NUMBER</th>
+                <th>PART_WEIGHT</th>
+                <th>PART_COST</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model.OrderBy(m => m.BOX_ID).ThenBy(m => m.PART_NUMBER))
+            {
+                <tr>
+
+                    <td>@item.BOX_ID</td>
+                    <td>@item.PART_NUMBER</td>
+                    <td>@item.PART_WEIGHT</td>
+                    <td>$@item.PART_COST</td>
+
+                </tr>
+
+            }
+        </tbody>
+
+        <tfoot>
+            <tr>
+
+                <th colspan="2">TOPLAM</th>
+                <th>@Model.Sum(m => m.PART_WEIGHT)</th>
+
+                <th>$@Model.Sum(m => m.PART_COST)</th>
+
+            </tr>
+        </tfoot>
+    </table>
+</div>

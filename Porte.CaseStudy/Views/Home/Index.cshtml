@@ -1,0 +1,39 @@
+﻿@model BoxViewModel
+@{
+    ViewData["Title"] = "Anasayfa";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Hoşgeldiniz</h1>
+</div>
+<br />
+<div>
+    <table class="table table-bordered">
+        <thead>
+
+            <tr>
+
+                <th>BOX_ID</th>
+                <th>WEIGHT</th>
+                <th>PART_COUNT</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model.Boxes)
+            {
+                <tr>
+
+                    <td>@item.BOX_ID</td>
+                    <td>@item.WEIGHT</td>
+                    <td>@item.PART_COUNT</td>
+                </tr>
+
+            }
+        </tbody>
+
+    </table>
+    <button id="calculate" class="btn btn-primary">Hesapla</button>
+</div>
+<br />
+<partial name="_PartialParts" model="Model.Parts" />
